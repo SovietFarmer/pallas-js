@@ -1,0 +1,7 @@
+name: pallas-js
+author: ejt
+game: [wow_wrath, wow_retail]
+language: js
+
+files:
+  - Pallas.js
