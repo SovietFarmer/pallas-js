@@ -765,6 +765,7 @@ declare module "wow" {
     equipment: Array<WoWItem?>;
     totems: Array<{ index: number, guid: WoWGuid, name: string, duration: number, start: number }>;
 
+    // Wrath only
     talents: {
       activeSpecGroup: number,
       numSpecGroups: number,
@@ -779,6 +780,10 @@ declare module "wow" {
         }>
       }>
     }
+
+    // Dragonflight only
+    activeSpecId: number;
+
     lastHardwareAction: number;
 
     activePet: WoWUnit;
@@ -998,6 +1003,10 @@ declare module "wow" {
     activeGroup: Party;
   }
 
+  declare class FrameScript {
+    onEvent(name: string, ...args): void;
+  }
+
   declare enum GameState {
     None,
     IsConnecting,
@@ -1031,10 +1040,4 @@ declare module "wow" {
   }
 
   gameFlavor: GameFlavor;
-
-  declare class FrameScript {
-    addListener(name: string, callback: function): undefined;
-    removeListener(callback: function): undefined;
-    removeAllListeners(name: string): undefined;
-  }
 }
