@@ -5,6 +5,8 @@ import { BehaviorBuilder } from './BehaviorBuilder';
 import { Specialization } from './Data/Specialization';
 import { me, objMgr } from './ObjectManager';
 
+import('./tests/test_fs').then(_ => console.log('test fs done')).catch(e => console.log(`${e}\n${e.stack}`));
+
 objMgr.update();
 if (objMgr.me) {
   console.log(`Me: ${me.name}`);
