@@ -5,6 +5,8 @@ import { BehaviorBuilder } from './BehaviorBuilder';
 import { Specialization } from './Data/Specialization';
 import { me, objMgr } from './ObjectManager';
 
+import('./tests/test_fs').then(_ => console.log('test fs done')).catch(e => console.log(`${e}\n${e.stack}`));
+
 objMgr.update();
 if (objMgr.me) {
   console.log(`Me: ${me.name}`);
@@ -14,6 +16,9 @@ if (objMgr.me) {
   console.log(`Players: ${objMgr.players.length}`);
   const females = objMgr.units.filter(u => u.gender == GenderType.Female);
   console.log(`${females.length} females near you :)`);
+  [me.getAura("Battle Shout"), me.getVisibleAura("Battle Shout"), me.getRaidAura("Battle Shout")].forEach(bs => {
+    console.log(`${bs?.name} (${bs?.id}) ${bs?.remaining / 1000} seconds remaining`);
+  });
 
   if (gameFlavor == GameFlavor.Wrath) {
     const spec = me.talents;

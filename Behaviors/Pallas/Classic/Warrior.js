@@ -16,7 +16,7 @@ export class WarriorFuryBehavior extends Behavior {
       common.waitForTarget(),
       common.waitForCastOrChannel(),
 
-      // shout
+      spell.cast("Battle Shout", null, () => !(me.getAura("Battle Shout")?.remaining > 15000)),
 
       common.waitForMeleeRange(),
 

@@ -69,22 +69,24 @@ export class BehaviorBuilder {
   }
 
   async #collectBehaviors() {
-    const d = new fs.Directory(currentScript.directory.concat(this.#behaviorPath));
-    for (const entry of d.entries) {
-      await this.#itrPath(entry, this.behaviors);
+    const dir = fs.opendir(this.#behaviorPath);
+    let dirent;
+    while ((dirent = dir.read()) !== null) {
+      await this.#itrDirent(dirent, this.behaviors)
     }
     console.log(`Collected ${this.behaviors.length} behaviors`);
   }
 
-  async #itrPath(path, out) {
-    if (path.isDirectory) {
-      const d = new fs.Directory(path.filename);
-      for (const entry of d.entries) {
-        await this.#itrPath(entry, out);
+  async #itrDirent(dirent, out) {
+    if (dirent.isDirectory()) {
+      const dir = fs.opendir(dirent.path);
+      let dirent2;
+      while ((dirent2 = dir.read()) !== null) {
+        await this.#itrDirent(dirent2, out);
       }
-    } else {
+    } else if (dirent.isFile()) {
       try {
-        const m = await import(path.filename);
+        const m = await import(dirent.path);
         Object.keys(m).forEach(o => {
           if (this.#isObjectBehavior(m, o)) {
             const behavior = new m[o]();
@@ -94,7 +96,7 @@ export class BehaviorBuilder {
           }
         });
       } catch (e) {
-        console.log(`${path.filename}: ${e}`);
+        console.log(`${dirent.file}: ${e}`);
       }
     }
   }
