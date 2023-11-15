@@ -14,6 +14,9 @@ if (objMgr.me) {
   console.log(`Players: ${objMgr.players.length}`);
   const females = objMgr.units.filter(u => u.gender == GenderType.Female);
   console.log(`${females.length} females near you :)`);
+  [me.getAura("Battle Shout"), me.getVisibleAura("Battle Shout"), me.getRaidAura("Battle Shout")].forEach(bs => {
+    console.log(`${bs?.name} (${bs?.id}) ${bs?.remaining / 1000} seconds remaining`);
+  });
 
   if (gameFlavor == GameFlavor.Wrath) {
     const spec = me.talents;
