@@ -91,23 +91,7 @@ class Pallas {
 
   rebuild() {
     if (me) {
-      this.rootBehavior = this.behaviorBuilder.build(this.getSpec(), BehaviorContext.Normal);
-    }
-  }
-
-  getSpec() {
-    if (!me) { return Specialization.Invalid; }
-    if (gameFlavor == GameFlavor.Wrath) {
-      const spec = me.talents;
-      let activeSpecId = Specialization.Invalid;
-      let topSpecPts = 0;
-      spec.specGroups[spec.activeSpecGroup].tabs.forEach(tab => {
-        if (tab.points > topSpecPts) { activeSpecId = tab.id; topSpecPts = tab.points; }
-      });
-      return activeSpecId;
-    }
-    else {
-      return me.activeSpecId;
+      this.rootBehavior = this.behaviorBuilder.build(me.specId, BehaviorContext.Normal);
     }
   }
 }
