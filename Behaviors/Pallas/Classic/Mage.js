@@ -1,4 +1,4 @@
-import { Behavior } from '/Behavior.js'
+import { Behavior } from '/Core/Behavior.js'
 
 export class MageBehavior extends Behavior {
 }

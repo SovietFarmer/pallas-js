@@ -1,9 +1,8 @@
-import { Behavior, BehaviorContext } from './Behavior';
 import * as fs from 'fs';
-import { currentScript } from 'wector';
 import { gameFlavor } from 'wow';
-import { Specialization } from './Data/Specialization'
-import * as bt from './BehaviorTree'
+import { Behavior, BehaviorContext } from './Behavior';
+import * as bt from './BehaviorTree';
+import { Specialization } from './Data/Specialization';
 
 export class BehaviorBuilder {
   #behaviorPath = "/Behaviors";

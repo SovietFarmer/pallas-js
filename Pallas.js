@@ -1,6 +1,6 @@
-import { BehaviorContext } from './Behavior';
-import { BehaviorBuilder } from './BehaviorBuilder';
-import { me, objMgr } from './ObjectManager';
+import { BehaviorContext } from './Core/Behavior';
+import { BehaviorBuilder } from './Core/BehaviorBuilder';
+import { me, objMgr } from './Core/ObjectManager';
 
 class Pallas {
   async initialize() {

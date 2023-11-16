@@ -4,5 +4,5 @@ game: [wow_wrath, wow_retail]
 language: js
 
 files:
-  - Overrides.js
+  - Core/Overrides.js
   - Pallas.js
