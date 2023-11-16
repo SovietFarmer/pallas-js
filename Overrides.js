@@ -1,6 +1,7 @@
-import { MovementFlags, StandStance, WoWSpell, WoWUnit } from 'wow';
-import { me } from "./ObjectManager";
+import { GameFlavor, MovementFlags, StandStance, WoWActivePlayer, WoWUnit, gameFlavor } from 'wow';
+import { Specialization } from './Data/Specialization';
 import immunes from "./Data/immunes";
+import { me } from "./ObjectManager";
 
 // Create a mask for movement-related flags using the globally available MovementFlags enum
 const movingMask =
@@ -153,3 +154,20 @@ Object.defineProperties(WoWUnit.prototype, {
     }
   },
 });
+
+Object.defineProperty(WoWActivePlayer.prototype, 'specId', {
+  get() {
+    if (gameFlavor == GameFlavor.Wrath) {
+      const spec = this.talents;
+      let activeSpecId = Specialization.Invalid;
+      let topSpecPts = 0;
+      spec.specGroups[spec.activeSpecGroup].tabs.forEach(tab => {
+        if (tab.points > topSpecPts) { activeSpecId = tab.id; topSpecPts = tab.points; }
+      });
+      return activeSpecId;
+    }
+    else {
+      return this.activeSpecId;
+    }
+  }
+})
