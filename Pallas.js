@@ -9,9 +9,6 @@ import('./tests/test_fs').then(_ => console.log('test fs done')).catch(e => cons
 
 objMgr.update();
 if (objMgr.me) {
-  me.foo("moooo");
-  console.log(me.bar);
-
   console.log(`Me: ${me.name}`);
   console.log(`Items: ${objMgr.items.length}`);
   console.log(`Units: ${objMgr.units.length}`);

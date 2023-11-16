@@ -13,7 +13,6 @@ class Common {
 
   validUnit(u) {
     if (!me.canAttack(u)) {
-      console.log("!me.canAttack(u)");
       return false;
     }
     if (!u.inCombat && !u.name.includes("Training Dummy")) {
