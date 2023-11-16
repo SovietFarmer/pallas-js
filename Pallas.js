@@ -1,12 +1,11 @@
+import { FrameScript } from 'wow';
 import { BehaviorContext } from './Core/Behavior';
 import { BehaviorBuilder } from './Core/BehaviorBuilder';
 import { me, objMgr } from './Core/ObjectManager';
 
-class Pallas {
+class Pallas extends FrameScript {
   async initialize() {
-    // update object manager so 'me' is available
     objMgr.update();
-    //this.events = new EventListener;
     this.behaviorBuilder = new BehaviorBuilder;
     await this.behaviorBuilder.initialize();
     this.rebuild();
@@ -27,8 +26,16 @@ class Pallas {
   }
 
   rebuild() {
+    objMgr.update();
     if (me) {
+      console.log('Rebuilding behaviors');
       this.rootBehavior = this.behaviorBuilder.build(me.specId, BehaviorContext.Normal);
+    }
+  }
+
+  onEvent(name, ...args) {
+    if (name === 'PLAYER_ENTERING_WORLD') {
+      this.rebuild();
     }
   }
 }
