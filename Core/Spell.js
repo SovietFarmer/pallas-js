@@ -1,6 +1,6 @@
 import { WoWSpell, WoWSpellBook } from 'wow';
 import * as bt from './BehaviorTree';
-import { me } from '/ObjectManager';
+import { me } from './ObjectManager';
 
 class Spell {
   cast(name, onUnit = null, requirements = null) {

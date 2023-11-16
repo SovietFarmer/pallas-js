@@ -1,5 +1,4 @@
 import { Specialization } from './Data/Specialization';
-import { GameFlavor } from 'wow';
 
 const BehaviorContext = {
   None: 0,
@@ -15,4 +14,4 @@ class Behavior {
   flavor = -1;
 }
 
-export { BehaviorContext, Behavior };
+export { Behavior, BehaviorContext };

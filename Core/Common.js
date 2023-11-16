@@ -1,5 +1,5 @@
-import * as bt from '/BehaviorTree';
-import { me } from '/ObjectManager';
+import * as bt from './BehaviorTree';
+import { me } from './ObjectManager';
 
 class Common {
   waitForTarget() {

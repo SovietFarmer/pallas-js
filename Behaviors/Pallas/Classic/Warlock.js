@@ -1,4 +1,1 @@
-import { Behavior } from '/Behavior.js'
-
-export class WarlockBehavior extends Behavior {
-}
+import { Behavior } from '/Core/Behavior.js'

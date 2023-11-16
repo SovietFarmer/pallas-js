@@ -1,10 +1,10 @@
 import { GameFlavor } from 'wow';
-import { Behavior, BehaviorContext } from '/Behavior.js';
-import * as bt from '/BehaviorTree';
-import { common } from '/Common';
-import { Specialization } from '/Data/Specialization';
-import { me } from '/ObjectManager';
-import { spell } from '/Spell';
+import { Behavior, BehaviorContext } from '/Core/Behavior.js';
+import * as bt from '/Core/BehaviorTree';
+import { common } from '/Core/Common';
+import { Specialization } from '/Core/Data/Specialization';
+import { me } from '/Core/ObjectManager';
+import { spell } from '/Core/Spell';
 
 export class WarriorFuryBehavior extends Behavior {
   context = BehaviorContext.All;

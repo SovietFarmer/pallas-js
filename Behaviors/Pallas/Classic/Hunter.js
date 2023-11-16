@@ -1,4 +1,1 @@
-import { Behavior } from '/Behavior.js'
-
-export class HunterBehavior extends Behavior {
-}
+import { Behavior } from '/Core/Behavior.js'
